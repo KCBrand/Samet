@@ -5,152 +5,146 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diagnóstico de Perda Invisível™ | Samet</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --samet-blue: #7EC8D9;
-      --samet-blue-dark: #5AABBD;
-      --samet-navy: #1B3A4B;
-      --samet-green: #2A8C4A;
-      --samet-green-light: #E8F5EC;
-      --samet-gold: #D4A017;
-      --samet-gold-light: #FFF8E1;
-      --samet-red: #C0392B;
-      --samet-red-light: #FDEDEC;
-      --bg: #FAFCFD;
+      --navy: #0B2A3C;
+      --navy-light: #133B52;
+      --blue: #89CDD8;
+      --blue-light: #B5E2EA;
+      --blue-pale: #E8F6F9;
+      --green: #2E8B57;
+      --green-light: #E8F5EC;
+      --gold: #D4A017;
+      --gold-light: #FFF8E1;
+      --red: #C0392B;
+      --red-light: #FDEDEC;
       --white: #FFFFFF;
-      --text: #1E2D3A;
-      --text-mid: #4A6274;
-      --text-light: #8295A3;
+      --bg: #FFFFFF;
+      --text-body: #5A6B7A;
+      --text-light: #8898A6;
       --border: #E4EBF0;
-      --shadow-sm: 0 1px 3px rgba(27, 58, 75, 0.06);
-      --shadow-md: 0 4px 24px rgba(27, 58, 75, 0.08);
-      --shadow-lg: 0 8px 40px rgba(27, 58, 75, 0.1);
-      --radius: 16px;
     }
 
     body {
       font-family: 'Open Sans', sans-serif;
       background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      color: var(--text-body);
+      line-height: 1.7;
       overflow-x: hidden;
-      min-height: 100vh;
     }
 
     h1, h2, h3, h4 {
       font-family: 'Montserrat', sans-serif;
+      color: var(--navy);
     }
 
-    /* ===== BACKGROUND SWOOSHES ===== */
-    .bg-swoosh {
+    /* ===== DECORATIVE ICONS (floating circles like the Samet site) ===== */
+    .floating-icons {
       position: fixed;
+      inset: 0;
       pointer-events: none;
       z-index: 0;
+      overflow: hidden;
     }
 
-    .bg-swoosh-top {
-      top: -10%;
-      right: -5%;
-      width: 55vw;
-      height: 55vw;
-      max-width: 800px;
-      max-height: 800px;
-      opacity: 0.07;
+    .float-icon {
+      position: absolute;
+      border: 1.5px solid var(--blue-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
     }
 
-    .bg-swoosh-bottom {
-      bottom: -15%;
-      left: -10%;
-      width: 50vw;
-      height: 50vw;
-      max-width: 700px;
-      max-height: 700px;
-      opacity: 0.04;
-      transform: rotate(180deg);
+    .float-icon svg {
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    /* ===== CONTAINER ===== */
-    .page-wrapper {
+    .fi-1 { width: 90px; height: 90px; top: 8%; left: 5%; }
+    .fi-1 svg { width: 36px; height: 36px; }
+    .fi-2 { width: 70px; height: 70px; top: 5%; right: 8%; }
+    .fi-2 svg { width: 28px; height: 28px; }
+    .fi-3 { width: 80px; height: 80px; top: 35%; right: 4%; }
+    .fi-3 svg { width: 32px; height: 32px; }
+    .fi-4 { width: 75px; height: 75px; top: 55%; left: 3%; }
+    .fi-4 svg { width: 30px; height: 30px; }
+    .fi-5 { width: 65px; height: 65px; bottom: 15%; right: 6%; }
+    .fi-5 svg { width: 26px; height: 26px; }
+    .fi-6 { width: 85px; height: 85px; bottom: 8%; left: 7%; }
+    .fi-6 svg { width: 34px; height: 34px; }
+
+    /* ===== MAIN CONTENT ===== */
+    .page {
       position: relative;
       z-index: 1;
-      max-width: 880px;
+      max-width: 820px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 28px;
     }
 
-    /* ===== HEADER ===== */
+    /* ===== HEADER / LOGO ===== */
     .header {
       text-align: center;
-      padding: 48px 0 16px;
+      padding: 56px 0 20px;
     }
 
-    .samet-logo {
+    .logo {
       display: inline-block;
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
 
-    .samet-logo svg {
-      height: 52px;
+    .logo svg {
+      height: 48px;
       width: auto;
     }
 
+    /* ===== HERO ===== */
     .hero {
-      margin-bottom: 40px;
+      text-align: center;
+      margin-bottom: 48px;
     }
 
     .hero h1 {
-      font-size: 2.1rem;
-      font-weight: 800;
-      color: var(--samet-navy);
-      letter-spacing: -0.5px;
-      margin-bottom: 4px;
+      font-size: 2.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
+      margin-bottom: 20px;
     }
 
-    .hero h1 .tm {
-      font-size: 0.6em;
-      color: var(--samet-blue);
-      vertical-align: super;
+    .hero h1 .accent {
+      color: var(--blue);
     }
 
-    .hero .tagline {
-      color: var(--text-mid);
+    .hero .desc {
       font-size: 1.05rem;
-      margin-top: 10px;
-      line-height: 1.6;
-    }
-
-    .hero .tagline strong {
-      color: var(--text);
-      font-weight: 600;
+      color: var(--text-body);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.8;
     }
 
     /* ===== CALCULATOR CARD ===== */
     .calc-card {
       background: var(--white);
-      border-radius: var(--radius);
-      padding: 40px 36px;
-      box-shadow: var(--shadow-md);
+      border-radius: 20px;
+      padding: 44px 40px;
+      margin-bottom: 36px;
       border: 1px solid var(--border);
-      margin-bottom: 28px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .calc-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--samet-blue), var(--samet-blue-dark));
+      box-shadow: 0 4px 30px rgba(11, 42, 60, 0.06);
     }
 
     .field {
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
     .field:last-child {
@@ -160,358 +154,359 @@
     .field-label {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 700;
       color: var(--text-light);
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
+      letter-spacing: 1.2px;
+      margin-bottom: 14px;
     }
 
-    .field-label .icon {
-      width: 20px;
-      height: 20px;
-      background: linear-gradient(135deg, var(--samet-blue), var(--samet-blue-dark));
-      border-radius: 6px;
+    .field-icon {
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--blue);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
-    .field-label .icon svg {
-      width: 12px;
-      height: 12px;
-      fill: #fff;
+    .field-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .chips {
       display: flex;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       flex-wrap: wrap;
     }
 
     .chip {
-      position: relative;
-      padding: 10px 20px;
+      padding: 11px 22px;
       border: 2px solid var(--border);
       border-radius: 12px;
       background: var(--white);
       cursor: pointer;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text);
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 800;
+      color: var(--navy);
+      transition: all 0.2s;
       user-select: none;
     }
 
-    .chip .unit {
+    .chip .sub {
       display: block;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 500;
       color: var(--text-light);
-      margin-top: 1px;
+      margin-top: 2px;
       letter-spacing: 0.5px;
     }
 
     .chip:hover {
-      border-color: var(--samet-blue);
-      background: rgba(126, 200, 217, 0.06);
+      border-color: var(--blue);
     }
 
     .chip.active {
-      border-color: var(--samet-blue);
-      background: linear-gradient(135deg, rgba(126, 200, 217, 0.1), rgba(90, 171, 189, 0.08));
-      color: var(--samet-navy);
-      box-shadow: 0 0 0 3px rgba(126, 200, 217, 0.15);
+      border-color: var(--blue);
+      background: var(--blue-pale);
     }
 
-    .dark-input {
+    .input-dark {
       width: 100%;
-      padding: 15px 18px;
+      padding: 16px 20px;
       border: none;
       border-radius: 12px;
       font-size: 1rem;
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-      background: var(--samet-navy);
+      background: var(--navy);
       color: #fff;
       appearance: none;
       -webkit-appearance: none;
       transition: box-shadow 0.2s;
     }
 
-    .dark-input:focus {
+    .input-dark:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(126, 200, 217, 0.35);
+      box-shadow: 0 0 0 3px rgba(137, 205, 216, 0.4);
     }
 
-    .dark-input::placeholder {
-      color: rgba(255, 255, 255, 0.35);
+    .input-dark::placeholder {
+      color: rgba(255, 255, 255, 0.3);
       font-weight: 400;
     }
 
-    select.dark-input {
+    select.input-dark {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 18px center;
-      padding-right: 44px;
+      background-position: right 20px center;
+      padding-right: 48px;
       cursor: pointer;
     }
 
-    /* ===== RESULTS GRID ===== */
-    .results-grid {
+    /* ===== RESULTS ===== */
+    .results {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 24px;
+      gap: 18px;
+      margin-bottom: 28px;
       opacity: 0;
-      transform: translateY(12px);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(16px);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      max-height: 0;
+      overflow: hidden;
     }
 
-    .results-grid.visible {
+    .results.show {
       opacity: 1;
       transform: translateY(0);
+      pointer-events: auto;
+      max-height: 400px;
+      margin-bottom: 28px;
     }
 
     .scenario {
       background: var(--white);
-      border-radius: var(--radius);
-      padding: 24px 20px;
+      border-radius: 16px;
+      padding: 26px 22px;
       border: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .scenario::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
+      box-shadow: 0 2px 12px rgba(11, 42, 60, 0.04);
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
     }
 
     .scenario:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 8px 28px rgba(11, 42, 60, 0.08);
     }
 
-    .scenario-label {
+    .scenario-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
       color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
       line-height: 1.5;
-      margin-bottom: 14px;
-      min-height: 36px;
+      margin-bottom: 16px;
+      min-height: 40px;
     }
 
     .scenario-value {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.7rem;
-      font-weight: 800;
+      font-size: 1.8rem;
+      font-weight: 900;
       letter-spacing: -0.5px;
       margin-bottom: 6px;
     }
 
     .scenario-monthly {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--text-light);
     }
 
-    .scenario.green .scenario-value { color: var(--samet-green); }
-    .scenario.green::after { background: var(--samet-green); }
-    .scenario.green { border-bottom: none; }
+    .scenario.s-green .scenario-value { color: var(--green); }
+    .scenario.s-gold .scenario-value { color: var(--gold); }
+    .scenario.s-red .scenario-value { color: var(--red); }
 
-    .scenario.gold .scenario-value { color: var(--samet-gold); }
-    .scenario.gold::after { background: var(--samet-gold); }
-    .scenario.gold { border-bottom: none; }
-
-    .scenario.red .scenario-value { color: var(--samet-red); }
-    .scenario.red::after { background: var(--samet-red); }
-    .scenario.red { border-bottom: none; }
-
-    /* ===== ALERT BOX ===== */
-    .alert-box {
-      background: var(--samet-gold-light);
-      border-left: 5px solid var(--samet-gold);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      padding: 22px 28px;
-      margin-bottom: 32px;
-      font-size: 0.92rem;
-      line-height: 1.75;
+    /* ===== ALERT ===== */
+    .alert {
+      background: var(--gold-light);
+      border-left: 5px solid var(--gold);
+      border-radius: 0 16px 16px 0;
+      padding: 24px 30px;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+      line-height: 1.8;
       opacity: 0;
-      transform: translateY(12px);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+      transform: translateY(16px);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+      max-height: 0;
+      overflow: hidden;
     }
 
-    .alert-box.visible {
+    .alert.show {
       opacity: 1;
       transform: translateY(0);
+      max-height: 200px;
     }
 
-    .alert-box strong {
-      color: var(--samet-navy);
+    .alert strong {
+      color: var(--navy);
       font-weight: 700;
     }
 
-    /* ===== CTA / LEAD FORM ===== */
-    .cta-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 44px 40px;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
-      margin-bottom: 32px;
-      position: relative;
+    /* ===== DIVIDER ===== */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 48px 0;
+      color: var(--text-light);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
     }
 
-    .cta-card::before {
+    .divider::before,
+    .divider::after {
       content: '';
-      position: absolute;
-      top: -1px;
-      left: -1px;
-      right: -1px;
-      bottom: -1px;
-      border-radius: var(--radius);
-      border: 2px solid transparent;
-      background: linear-gradient(135deg, rgba(126,200,217,0.2), transparent, transparent, rgba(126,200,217,0.1)) border-box;
-      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
+      height: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+
+    /* ===== CTA FORM ===== */
+    .cta-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 48px 44px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 30px rgba(11, 42, 60, 0.06);
+      margin-bottom: 36px;
     }
 
     .cta-card h2 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--samet-navy);
-      margin-bottom: 8px;
+      font-size: 1.6rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      text-align: center;
     }
 
     .cta-card .cta-desc {
-      color: var(--text-mid);
-      font-size: 0.92rem;
-      margin-bottom: 28px;
-      line-height: 1.6;
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-body);
+      margin-bottom: 32px;
+      line-height: 1.7;
     }
 
-    .form-group {
-      margin-bottom: 18px;
+    .form-row {
+      margin-bottom: 20px;
     }
 
-    .form-group label {
+    .form-row label {
       display: block;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      color: var(--text);
-      margin-bottom: 7px;
+      color: var(--navy);
+      margin-bottom: 8px;
     }
 
-    .form-group input {
+    .form-row input {
       width: 100%;
-      padding: 13px 16px;
+      padding: 14px 18px;
       border: 1.5px solid var(--border);
       border-radius: 12px;
       font-size: 0.95rem;
       font-family: 'Open Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background: #FAFCFD;
+      color: var(--navy);
       transition: all 0.2s;
     }
 
-    .form-group input:focus {
+    .form-row input:focus {
       outline: none;
-      border-color: var(--samet-blue);
+      border-color: var(--blue);
       background: var(--white);
-      box-shadow: 0 0 0 4px rgba(126, 200, 217, 0.12);
+      box-shadow: 0 0 0 4px rgba(137, 205, 216, 0.15);
     }
 
-    .form-group input::placeholder {
-      color: var(--text-light);
-    }
-
-    .btn-submit {
+    .btn-cta {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--samet-navy);
+      background: var(--navy);
       color: #fff;
       border: none;
-      padding: 15px 36px;
+      padding: 16px 40px;
       border-radius: 12px;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.95rem;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       cursor: pointer;
       transition: all 0.25s;
-      margin-top: 6px;
     }
 
-    .btn-submit:hover {
-      background: #244D63;
+    .btn-cta:hover {
+      background: var(--navy-light);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(27, 58, 75, 0.2);
+      box-shadow: 0 8px 24px rgba(11, 42, 60, 0.15);
     }
 
-    .btn-submit:active {
-      transform: translateY(0);
-    }
-
-    .btn-submit svg {
+    .btn-cta svg {
       width: 18px;
       height: 18px;
-      fill: currentColor;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
       transition: transform 0.2s;
     }
 
-    .btn-submit:hover svg {
-      transform: translateX(3px);
+    .btn-cta:hover svg {
+      transform: translateX(4px);
     }
 
     /* ===== EXAMPLE BOX ===== */
-    .example-box {
-      background: var(--samet-green-light);
-      border-left: 5px solid var(--samet-green);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      padding: 30px 32px;
+    .example {
+      background: var(--green-light);
+      border-left: 5px solid var(--green);
+      border-radius: 0 16px 16px 0;
+      padding: 32px 36px;
       margin-bottom: 48px;
       opacity: 0;
-      transform: translateY(12px);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+      transform: translateY(16px);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+      max-height: 0;
+      overflow: hidden;
     }
 
-    .example-box.visible {
+    .example.show {
       opacity: 1;
       transform: translateY(0);
+      max-height: 400px;
     }
 
-    .example-box h3 {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--samet-navy);
-      margin-bottom: 18px;
+    .example h3 {
+      font-size: 1.15rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
-    .example-stats {
+    .stats-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin-bottom: 20px;
     }
 
-    .example-stat-label {
+    .stat-label {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 600;
       color: var(--text-light);
       text-transform: uppercase;
@@ -519,120 +514,144 @@
       margin-bottom: 4px;
     }
 
-    .example-stat-value {
+    .stat-val {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.95rem;
       font-weight: 700;
-      color: var(--samet-navy);
+      color: var(--navy);
     }
 
-    .example-revenue-label {
+    .revenue-label {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      color: var(--samet-blue-dark);
+      color: var(--blue);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 4px;
     }
 
-    .example-revenue {
+    .revenue-val {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--samet-green);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--green);
     }
 
     /* ===== FOOTER ===== */
     .footer {
       text-align: center;
-      padding: 24px 0 40px;
-      color: var(--text-light);
-      font-size: 0.78rem;
+      padding: 28px 0 44px;
       border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-light);
     }
 
-    .footer .footer-brand {
+    .footer strong {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      color: var(--samet-navy);
+      font-weight: 800;
+      color: var(--navy);
     }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 680px) {
+    @media (max-width: 700px) {
       .hero h1 { font-size: 1.5rem; }
-      .results-grid { grid-template-columns: 1fr; gap: 12px; }
-      .example-stats { grid-template-columns: 1fr; gap: 10px; }
-      .calc-card { padding: 28px 20px; }
-      .cta-card { padding: 28px 22px; }
-      .chips { gap: 8px; }
-      .chip { padding: 8px 14px; font-size: 0.85rem; }
+      .results { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr; }
+      .calc-card { padding: 28px 22px; }
+      .cta-card { padding: 32px 24px; }
       .scenario-value { font-size: 1.4rem; }
-      .samet-logo svg { height: 40px; }
+      .float-icon { display: none; }
+      .chips { gap: 8px; }
+      .chip { padding: 9px 16px; font-size: 0.85rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- Background swoosh elements -->
-<svg class="bg-swoosh bg-swoosh-top" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-  <path d="M450,100 C500,200 480,380 350,440 C220,500 80,450 30,340 C-20,230 30,100 150,50 C270,0 400,0 450,100Z" fill="none" stroke="#7EC8D9" stroke-width="40" stroke-linecap="round"/>
-</svg>
-<svg class="bg-swoosh bg-swoosh-bottom" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-  <path d="M450,100 C500,200 480,380 350,440 C220,500 80,450 30,340 C-20,230 30,100 150,50 C270,0 400,0 450,100Z" fill="none" stroke="#7EC8D9" stroke-width="35" stroke-linecap="round"/>
-</svg>
+<!-- Floating decorative icons like sametsolar.com.br -->
+<div class="floating-icons">
+  <!-- Lightbulb + leaf -->
+  <div class="float-icon fi-1">
+    <svg viewBox="0 0 24 24"><path d="M9 21h6M12 3a6 6 0 0 0-4 10.47V17h8v-3.53A6 6 0 0 0 12 3z"/><path d="M10 17v1a2 2 0 0 0 4 0v-1"/><path d="M12 3V1M4.22 4.22l-1.42-1.42M20.78 4.22l1.42-1.42"/></svg>
+  </div>
+  <!-- Plug + leaf -->
+  <div class="float-icon fi-2">
+    <svg viewBox="0 0 24 24"><path d="M12 22v-5M9 8V2M15 8V2M7 8h10a2 2 0 0 1 2 2v2a6 6 0 0 1-12 0v-2a2 2 0 0 1 2-2z"/></svg>
+  </div>
+  <!-- Solar panels -->
+  <div class="float-icon fi-3">
+    <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10" rx="1"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="9" y1="8" x2="9" y2="18"/><line x1="15" y1="8" x2="15" y2="18"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="5" y1="3" x2="7" y2="5.5"/><line x1="19" y1="3" x2="17" y2="5.5"/></svg>
+  </div>
+  <!-- Lightning bolt circle -->
+  <div class="float-icon fi-4">
+    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+  </div>
+  <!-- Plant -->
+  <div class="float-icon fi-5">
+    <svg viewBox="0 0 24 24"><path d="M12 22V12M7 8c0-3 2-5 5-5s5 2 5 5c0 4-5 4-5 4s-5 0-5-4z"/><path d="M7 15c-2 0-4-1.5-4-4s2-4 4-4"/><path d="M17 15c2 0 4-1.5 4-4s-2-4-4-4"/></svg>
+  </div>
+  <!-- Recycle energy -->
+  <div class="float-icon fi-6">
+    <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><polyline points="21 3 21 9 15 9"/><path d="M21 3l-6 6"/></svg>
+  </div>
+</div>
 
-<div class="page-wrapper">
+<div class="page">
 
   <!-- HEADER -->
   <header class="header">
-    <div class="samet-logo">
-      <svg viewBox="0 0 320 70" xmlns="http://www.w3.org/2000/svg">
-        <!-- Samet swoosh arc -->
-        <path d="M5,55 C30,10 100,-5 160,10 C220,25 270,55 310,25"
-              fill="none" stroke="#7EC8D9" stroke-width="10" stroke-linecap="round"/>
+    <div class="logo">
+      <svg viewBox="0 0 300 65" xmlns="http://www.w3.org/2000/svg">
+        <!-- Swoosh arc curving from left to right, above text -->
+        <path d="M10,48 C50,5 140,-8 190,12 C240,32 270,18 290,8"
+              fill="none" stroke="#89CDD8" stroke-width="8" stroke-linecap="round"/>
         <!-- SAMET text -->
-        <text x="40" y="58" font-family="Montserrat, sans-serif" font-weight="800" font-size="42" fill="#1B3A4B" letter-spacing="4">SAMET</text>
+        <text x="38" y="56" font-family="Montserrat, sans-serif" font-weight="900" font-size="40" fill="#0B2A3C" letter-spacing="6">SAMET</text>
       </svg>
     </div>
-
-    <div class="hero">
-      <h1>Diagnóstico de Perda Invisível<span class="tm">™</span></h1>
-      <p class="tagline">
-        <strong>Quanto sua usina pode estar deixando de gerar?</strong><br>
-        Descubra o impacto financeiro de perdas invisíveis de performance.
-      </p>
-    </div>
   </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>
+      Diagnóstico de<br>
+      <span class="accent">Perda Invisível</span>™
+    </h1>
+    <p class="desc">
+      Quanto sua usina pode estar deixando de gerar?
+      Descubra o impacto financeiro de perdas invisíveis de performance.
+    </p>
+  </section>
 
   <!-- CALCULATOR -->
   <section class="calc-card">
 
     <div class="field">
       <div class="field-label">
-        <div class="icon">
-          <svg viewBox="0 0 24 24"><path d="M13 3L4 14h7l-2 7 9-11h-7l2-7z"/></svg>
+        <div class="field-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
         Potência da usina (MWp)
       </div>
       <div class="chips">
-        <button class="chip" data-value="1" onclick="setPotencia(1)">1<span class="unit">MWp</span></button>
-        <button class="chip" data-value="3" onclick="setPotencia(3)">3<span class="unit">MWp</span></button>
-        <button class="chip" data-value="5" onclick="setPotencia(5)">5<span class="unit">MWp</span></button>
-        <button class="chip" data-value="10" onclick="setPotencia(10)">10<span class="unit">MWp</span></button>
-        <button class="chip" data-value="25" onclick="setPotencia(25)">25<span class="unit">MWp</span></button>
+        <button class="chip" data-value="1" onclick="setPotencia(1)">1<span class="sub">MWp</span></button>
+        <button class="chip" data-value="3" onclick="setPotencia(3)">3<span class="sub">MWp</span></button>
+        <button class="chip" data-value="5" onclick="setPotencia(5)">5<span class="sub">MWp</span></button>
+        <button class="chip" data-value="10" onclick="setPotencia(10)">10<span class="sub">MWp</span></button>
+        <button class="chip" data-value="25" onclick="setPotencia(25)">25<span class="sub">MWp</span></button>
       </div>
-      <input class="dark-input" type="number" id="potencia" placeholder="Ou digite a potência" min="0.1" step="0.1" oninput="calcular()">
+      <input class="input-dark" type="number" id="potencia" placeholder="Ou digite a potência" min="0.1" step="0.1" oninput="calcular()">
     </div>
 
     <div class="field">
       <div class="field-label">
-        <div class="icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        <div class="field-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
         </div>
         Estado da usina (irradiação)
       </div>
-      <select class="dark-input" id="irradiacao" onchange="calcular()">
+      <select class="input-dark" id="irradiacao" onchange="calcular()">
         <option value="1350">Norte — 1.350 kWh/kWp/ano</option>
         <option value="1450">Nordeste — 1.450 kWh/kWp/ano</option>
         <option value="1400">Centro-Oeste — 1.400 kWh/kWp/ano</option>
@@ -643,115 +662,116 @@
 
     <div class="field">
       <div class="field-label">
-        <div class="icon">
-          <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        <div class="field-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
         Valor médio da energia
       </div>
       <div class="chips">
-        <button class="chip" data-tarifa="400" onclick="setTarifa(400)">R$ 400<span class="unit">/MWh</span></button>
-        <button class="chip" data-tarifa="650" onclick="setTarifa(650)">R$ 650<span class="unit">/MWh</span></button>
-        <button class="chip" data-tarifa="800" onclick="setTarifa(800)">R$ 800<span class="unit">/MWh</span></button>
+        <button class="chip" data-tarifa="400" onclick="setTarifa(400)">R$ 400<span class="sub">/MWh</span></button>
+        <button class="chip" data-tarifa="650" onclick="setTarifa(650)">R$ 650<span class="sub">/MWh</span></button>
+        <button class="chip" data-tarifa="800" onclick="setTarifa(800)">R$ 800<span class="sub">/MWh</span></button>
       </div>
-      <input class="dark-input" type="number" id="tarifa" placeholder="Ou digite o valor em R$/MWh" min="1" step="1" oninput="calcular()">
+      <input class="input-dark" type="number" id="tarifa" placeholder="Ou digite o valor em R$/MWh" min="1" step="1" oninput="calcular()">
     </div>
 
   </section>
 
   <!-- RESULTS -->
-  <div class="results-grid" id="results">
-    <div class="scenario green">
-      <div class="scenario-label">Cenário conservador (1% de perda)</div>
+  <div class="results" id="results">
+    <div class="scenario s-green">
+      <div class="scenario-title">Cenário conservador<br>(1% de perda)</div>
       <div class="scenario-value" id="val-conservador">R$ 0</div>
       <div class="scenario-monthly" id="mes-conservador">R$ 0/mês</div>
     </div>
-    <div class="scenario gold">
-      <div class="scenario-label">Cenário provável (3% de perda)</div>
+    <div class="scenario s-gold">
+      <div class="scenario-title">Cenário provável<br>(3% de perda)</div>
       <div class="scenario-value" id="val-provavel">R$ 0</div>
       <div class="scenario-monthly" id="mes-provavel">R$ 0/mês</div>
     </div>
-    <div class="scenario red">
-      <div class="scenario-label">Cenário crítico (5% de perda)</div>
+    <div class="scenario s-red">
+      <div class="scenario-title">Cenário crítico<br>(5% de perda)</div>
       <div class="scenario-value" id="val-critico">R$ 0</div>
       <div class="scenario-monthly" id="mes-critico">R$ 0/mês</div>
     </div>
   </div>
 
   <!-- ALERT -->
-  <div class="alert-box" id="alert">
+  <div class="alert" id="alert">
     <strong>O maior problema é que essas perdas raramente geram alarmes.</strong> A usina continua operando. Os inversores continuam online. Mas parte da receita fica pelo caminho.
   </div>
+
+  <!-- DIVIDER -->
+  <div class="divider">Solicite um diagnóstico</div>
 
   <!-- CTA FORM -->
   <section class="cta-card">
     <h2>Quer descobrir o número real?</h2>
     <p class="cta-desc">Solicite um diagnóstico de performance. A Samet identifica desvios de geração, quantifica perdas e aponta oportunidades de recuperação.</p>
     <form id="lead-form" onsubmit="submitForm(event)">
-      <div class="form-group">
+      <div class="form-row">
         <label>Nome completo</label>
         <input type="text" id="nome" placeholder="Seu nome" required>
       </div>
-      <div class="form-group">
+      <div class="form-row">
         <label>Email</label>
         <input type="email" id="email" placeholder="seu@email.com" required>
       </div>
-      <div class="form-group">
+      <div class="form-row">
         <label>Telefone</label>
         <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
       </div>
-      <button type="submit" class="btn-submit">
+      <button type="submit" class="btn-cta">
         Solicitar diagnóstico
-        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </button>
     </form>
   </section>
 
   <!-- EXAMPLE -->
-  <div class="example-box" id="example">
+  <div class="example" id="example">
     <h3>Exemplo real: Usina <span id="ex-potencia">5</span> MWp</h3>
-    <div class="example-stats">
+    <div class="stats-row">
       <div>
-        <div class="example-stat-label">Produtividade média</div>
-        <div class="example-stat-value" id="ex-produtividade">1.550 kWh/kWp/ano</div>
+        <div class="stat-label">Produtividade média</div>
+        <div class="stat-val" id="ex-produtividade">1.550 kWh/kWp/ano</div>
       </div>
       <div>
-        <div class="example-stat-label">Geração anual</div>
-        <div class="example-stat-value" id="ex-geracao">7.750 MWh</div>
+        <div class="stat-label">Geração anual</div>
+        <div class="stat-val" id="ex-geracao">7.750 MWh</div>
       </div>
       <div>
-        <div class="example-stat-label">Tarifa</div>
-        <div class="example-stat-value" id="ex-tarifa">R$ 650/MWh</div>
+        <div class="stat-label">Tarifa</div>
+        <div class="stat-val" id="ex-tarifa">R$ 650/MWh</div>
       </div>
     </div>
-    <div class="example-revenue-label">Receita potencial</div>
-    <div class="example-revenue" id="ex-receita">R$ 5.037.500</div>
+    <div class="revenue-label">Receita potencial</div>
+    <div class="revenue-val" id="ex-receita">R$ 5.037.500</div>
   </div>
 
   <!-- FOOTER -->
   <footer class="footer">
-    &copy; 2026 <span class="footer-brand">Samet</span>. Todos os direitos reservados.
+    &copy; 2026 <strong>Samet</strong>. Todos os direitos reservados.
   </footer>
 
 </div>
 
 <script>
-  function formatBRL(value) {
-    return 'R$ ' + Math.round(value).toLocaleString('pt-BR');
+  function formatBRL(v) {
+    return 'R$ ' + Math.round(v).toLocaleString('pt-BR');
   }
 
   function setPotencia(val) {
     document.getElementById('potencia').value = val;
-    document.querySelectorAll('.chip[data-value]').forEach(b => {
-      b.classList.toggle('active', Number(b.dataset.value) === val);
-    });
+    document.querySelectorAll('.chip[data-value]').forEach(b =>
+      b.classList.toggle('active', Number(b.dataset.value) === val));
     calcular();
   }
 
   function setTarifa(val) {
     document.getElementById('tarifa').value = val;
-    document.querySelectorAll('.chip[data-tarifa]').forEach(b => {
-      b.classList.toggle('active', Number(b.dataset.tarifa) === val);
-    });
+    document.querySelectorAll('.chip[data-tarifa]').forEach(b =>
+      b.classList.toggle('active', Number(b.dataset.tarifa) === val));
     calcular();
   }
 
@@ -760,58 +780,45 @@
     const irradiacao = parseFloat(document.getElementById('irradiacao').value);
     const tarifa = parseFloat(document.getElementById('tarifa').value);
 
-    const resultsEl = document.getElementById('results');
-    const alertEl = document.getElementById('alert');
-    const exampleEl = document.getElementById('example');
+    const show = potencia && tarifa;
 
-    if (!potencia || !tarifa) {
-      resultsEl.classList.remove('visible');
-      alertEl.classList.remove('visible');
-      exampleEl.classList.remove('visible');
-      return;
-    }
+    document.getElementById('results').classList.toggle('show', !!show);
+    document.getElementById('alert').classList.toggle('show', !!show);
+    document.getElementById('example').classList.toggle('show', !!show);
 
-    const geracaoAnual = potencia * irradiacao;
-    const receitaAnual = geracaoAnual * tarifa;
+    if (!show) return;
 
-    const perda1 = receitaAnual * 0.01;
-    const perda3 = receitaAnual * 0.03;
-    const perda5 = receitaAnual * 0.05;
+    const geracao = potencia * irradiacao;
+    const receita = geracao * tarifa;
 
-    document.getElementById('val-conservador').textContent = formatBRL(perda1);
-    document.getElementById('mes-conservador').textContent = formatBRL(perda1 / 12) + '/mês';
-    document.getElementById('val-provavel').textContent = formatBRL(perda3);
-    document.getElementById('mes-provavel').textContent = formatBRL(perda3 / 12) + '/mês';
-    document.getElementById('val-critico').textContent = formatBRL(perda5);
-    document.getElementById('mes-critico').textContent = formatBRL(perda5 / 12) + '/mês';
+    const p1 = receita * 0.01;
+    const p3 = receita * 0.03;
+    const p5 = receita * 0.05;
 
-    resultsEl.classList.add('visible');
-    alertEl.classList.add('visible');
+    document.getElementById('val-conservador').textContent = formatBRL(p1);
+    document.getElementById('mes-conservador').textContent = formatBRL(p1 / 12) + '/mês';
+    document.getElementById('val-provavel').textContent = formatBRL(p3);
+    document.getElementById('mes-provavel').textContent = formatBRL(p3 / 12) + '/mês';
+    document.getElementById('val-critico').textContent = formatBRL(p5);
+    document.getElementById('mes-critico').textContent = formatBRL(p5 / 12) + '/mês';
 
     document.getElementById('ex-potencia').textContent = potencia;
     document.getElementById('ex-produtividade').textContent = irradiacao.toLocaleString('pt-BR') + ' kWh/kWp/ano';
-    document.getElementById('ex-geracao').textContent = geracaoAnual.toLocaleString('pt-BR') + ' MWh';
+    document.getElementById('ex-geracao').textContent = geracao.toLocaleString('pt-BR') + ' MWh';
     document.getElementById('ex-tarifa').textContent = 'R$ ' + tarifa.toLocaleString('pt-BR') + '/MWh';
-    document.getElementById('ex-receita').textContent = formatBRL(receitaAnual);
-    exampleEl.classList.add('visible');
+    document.getElementById('ex-receita').textContent = formatBRL(receita);
   }
 
   function submitForm(e) {
     e.preventDefault();
     const btn = e.target.querySelector('button');
-    const originalHTML = btn.innerHTML;
-    btn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Enviado com sucesso!';
-    btn.style.background = '#2A8C4A';
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Enviado!';
+    btn.style.background = '#2E8B57';
     btn.disabled = true;
-
-    setTimeout(() => {
-      btn.innerHTML = originalHTML;
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 3000);
+    setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; }, 3000);
   }
 
-  // Phone mask
   document.getElementById('telefone').addEventListener('input', function(e) {
     let v = e.target.value.replace(/\D/g, '');
     if (v.length > 11) v = v.slice(0, 11);
